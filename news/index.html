@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -63,7 +67,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -77,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lifecycle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -85,33 +89,53 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/lifecycle.html">Get started</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/stages.html">Lifecycle stages</a>
+    </li>
+    <li>
+      <a href="../articles/manage.html">Manage lifecycle changes in functions you use</a>
+    </li>
+    <li>
+      <a href="../articles/communicate.html">Communicate lifecycle changes in your functions</a>
+    </li>
+  </ul>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     News
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.tidyverse.org/blog/2021/02/lifecycle-1-0-0/">lifecycle 1.0.0</a>
+    </li>
+    <li class="divider"></li>
     <li>
       <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
-<li>
-  <a href="https://github.com/r-lib/lifecycle">
-    <span class="fab fa fab fa-github fa-lg"></span>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/r-lib/lifecycle/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -128,18 +152,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/r-lib/lifecycle/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="lifecycle-development-version" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="development version">
 <a href="#lifecycle-development-version" class="anchor"></a>lifecycle (development version)<small> Unreleased </small>
 </h1>
 </div>
-    <div id="lifecycle-0-2-0" class="section level1">
-<h1 class="page-header">
-<a href="#lifecycle-0-2-0" class="anchor"></a>lifecycle 0.2.0<small> 2020-03-06 </small>
+    <div id="lifecycle-100" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0">
+<a href="#lifecycle-100" class="anchor"></a>lifecycle 1.0.0<small> 2021-02-15 </small>
+</h1>
+<ul>
+<li>
+<p>New vignettes:</p>
+<ul>
+<li>
+<code><a href="../articles/stages.html">vignette("stages")</a></code> describes the lifecycle stages</li>
+<li>
+<code><a href="../articles/manage.html">vignette("manage")</a></code> teaches you how to manage lifecycle changes in functions you <em>use</em>.</li>
+<li>
+<code><a href="../articles/communicate.html">vignette("communicate")</a></code> shows how to use lifecycle in functions that you <em>write</em>.</li>
+</ul>
+</li>
+<li>
+<p>In <code><a href="../reference/deprecate_soft.html">deprecate_soft()</a></code>, <code><a href="../reference/deprecate_soft.html">deprecate_warn()</a></code>, and <code><a href="../reference/deprecate_soft.html">deprecate_stop()</a></code>:</p>
+<ul>
+<li><p>You can deprecate an argument with <code>foo(arg)</code> instead of <code>foo(arg =)</code> (<a href='https://github.com/r-lib/lifecycle/issues/78'>#78</a>). This syntax is similar in spirit to the formal arguments of function definitions.</p></li>
+<li><p>You can deprecate R6 methods by using <code>class$method()</code> (<a href='https://github.com/r-lib/lifecycle/issues/54'>#54</a>).</p></li>
+<li><p>A character vector <code>details</code> is now converted into a bulleted list (<a href='https://github.com/r-lib/lifecycle/issues/55'>#55</a>).</p></li>
+<li><p>Messages for non-prefix functions (like “<code>x&lt;-</code>()” and “<code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>()”) look a little nicer (<a href='https://github.com/r-lib/lifecycle/issues/95'>#95</a>).</p></li>
+<li><p>Manually printed warnings now omit the advice footer (<a href='https://github.com/r-lib/lifecycle/issues/68'>#68</a>).</p></li>
+</ul>
+</li>
+<li><p>Experimental <code><a href="../reference/signal_stage.html">signal_stage()</a></code> can be used to signal that a function is experimental or superseded. These signals are not currently hooked up to any behaviour, but we’ll add tools in a future release (<a href='https://github.com/r-lib/lifecycle/issues/44'>#44</a>).</p></li>
+<li><p><code>lifecycle_cnd_data()</code> has been removed; as far as I can tell it wasn’t used by anyone.</p></li>
+</ul>
+</div>
+    <div id="lifecycle-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#lifecycle-020" class="anchor"></a>lifecycle 0.2.0<small> 2020-03-06 </small>
 </h1>
 <ul>
 <li><p>Lifecycle warnings are now displayed once every 8 hours.</p></li>
@@ -151,9 +205,9 @@
 <li><p>New <code><a href="../reference/deprecated.html">is_present()</a></code> function to test whether the caller has supplied a <code><a href="../reference/deprecated.html">deprecated()</a></code> function.</p></li>
 </ul>
 </div>
-    <div id="lifecycle-0-1-0" class="section level1">
-<h1 class="page-header">
-<a href="#lifecycle-0-1-0" class="anchor"></a>lifecycle 0.1.0<small> 2019-08-01 </small>
+    <div id="lifecycle-010" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#lifecycle-010" class="anchor"></a>lifecycle 0.1.0<small> 2019-08-01 </small>
 </h1>
 <ul>
 <li><p>Deprecated functions under the control of the developer now warn repeatedly in unit tests.</p></li>
@@ -175,15 +229,10 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#lifecycle-development-version">development version</a></li>
-        <li><a href="#lifecycle-0-2-0">0.2.0</a></li>
-        <li><a href="#lifecycle-0-1-0">0.1.0</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -191,11 +240,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Lionel Henry.</p>
+  <p>Developed by Lionel Henry, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

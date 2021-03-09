@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -52,7 +56,6 @@ errors for deprecated functions.
 
 Note that functions calling deprecate_stop() invariably throw
 errors." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -80,7 +83,7 @@ errors." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -94,7 +97,7 @@ errors." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lifecycle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -102,33 +105,53 @@ errors." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/lifecycle.html">Get started</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/stages.html">Lifecycle stages</a>
+    </li>
+    <li>
+      <a href="../articles/manage.html">Manage lifecycle changes in functions you use</a>
+    </li>
+    <li>
+      <a href="../articles/communicate.html">Communicate lifecycle changes in your functions</a>
+    </li>
+  </ul>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     News
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.tidyverse.org/blog/2021/02/lifecycle-1-0-0/">lifecycle 1.0.0</a>
+    </li>
+    <li class="divider"></li>
     <li>
       <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
-<li>
-  <a href="https://github.com/r-lib/lifecycle">
-    <span class="fab fa fab fa-github fa-lg"></span>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/r-lib/lifecycle/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -173,48 +196,60 @@ errors.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_installed.html'>is_installed</a></span>(<span class='st'>"testthat"</span>)) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>testthat</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/is_installed.html'>is_installed</a></span><span class='op'>(</span><span class='st'>"testthat"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://testthat.r-lib.org'>testthat</a></span><span class='op'>)</span>
 
-  <span class='no'>mytool</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() {
-    <span class='fu'><a href='deprecate_soft.html'>deprecate_soft</a></span>(<span class='st'>"1.0.0"</span>, <span class='st'>"mytool()"</span>)
-    <span class='fl'>10</span> * <span class='fl'>10</span>
-  }
+  <span class='va'>mytool</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='fu'><a href='deprecate_soft.html'>deprecate_soft</a></span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"mytool()"</span><span class='op'>)</span>
+    <span class='fl'>10</span> <span class='op'>*</span> <span class='fl'>10</span>
+  <span class='op'>}</span>
 
   <span class='co'># Forcing the verbosity level is useful for unit testing. You can</span>
   <span class='co'># force errors to test that the function is indeed deprecated:</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/testthat/man/test_that.html'>test_that</a></span>(<span class='st'>"mytool is deprecated"</span>, {
-    <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/local_options.html'>with_options</a></span>(<span class='kw'>lifecycle_verbosity</span> <span class='kw'>=</span> <span class='st'>"error"</span>, {
-      <span class='fu'><a href='https://rdrr.io/pkg/testthat/man/expect_error.html'>expect_error</a></span>(<span class='fu'>mytool</span>(), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"defunctError"</span>)
-    })
-  })
+  <span class='fu'><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that</a></span><span class='op'>(</span><span class='st'>"mytool is deprecated"</span>, <span class='op'>{</span>
+    <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/local_options.html'>with_options</a></span><span class='op'>(</span>lifecycle_verbosity <span class='op'>=</span> <span class='st'>"error"</span>, <span class='op'>{</span>
+      <span class='fu'><a href='https://testthat.r-lib.org/reference/expect_error.html'>expect_error</a></span><span class='op'>(</span><span class='fu'>mytool</span><span class='op'>(</span><span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"defunctError"</span><span class='op'>)</span>
+    <span class='op'>}</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
 
   <span class='co'># Or you can enforce silence to safely test that the function</span>
   <span class='co'># still works:</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/testthat/man/test_that.html'>test_that</a></span>(<span class='st'>"mytool still works"</span>, {
-    <span class='kw pkg'>rlang</span><span class='kw ns'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/local_options.html'>with_options</a></span>(<span class='kw'>lifecycle_verbosity</span> <span class='kw'>=</span> <span class='st'>"quiet"</span>, {
-      <span class='fu'><a href='https://rdrr.io/pkg/testthat/man/equality-expectations.html'>expect_equal</a></span>(<span class='fu'>mytool</span>(), <span class='fl'>100</span>)
-    })
-  })
-}</div></pre>
+  <span class='fu'><a href='https://testthat.r-lib.org/reference/test_that.html'>test_that</a></span><span class='op'>(</span><span class='st'>"mytool still works"</span>, <span class='op'>{</span>
+    <span class='fu'>rlang</span><span class='fu'>::</span><span class='fu'><a href='https://rlang.r-lib.org/reference/local_options.html'>with_options</a></span><span class='op'>(</span>lifecycle_verbosity <span class='op'>=</span> <span class='st'>"quiet"</span>, <span class='op'>{</span>
+      <span class='fu'><a href='https://testthat.r-lib.org/reference/equality-expectations.html'>expect_equal</a></span><span class='op'>(</span><span class='fu'>mytool</span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>100</span><span class='op'>)</span>
+    <span class='op'>}</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; ── <span style='color: #BB00BB;font-weight: bold;'>Warning</span><span style='font-weight: bold;'> (&lt;text&gt;:12:5): mytool is deprecated</span><span> ─────────────────────────────────
+#&gt; `mytool()` was deprecated in &lt;NA&gt; 1.0.0.
+#&gt; </span><span style='font-weight: bold;'>Backtrace:</span><span>
+#&gt; </span><span style='color: #555555;'> 1. </span><span>rlang::with_options(...)
+#&gt; </span><span style='color: #555555;'> 7. </span><span>mytool()
+#&gt; 
+#&gt; ── </span><span style='color: #FFAF00;font-weight: bold;'>Failure</span><span style='font-weight: bold;'> (&lt;text&gt;:12:5): mytool is deprecated</span><span> ─────────────────────────────────
+#&gt; `mytool()` did not throw an error.
+#&gt; </span><span style='font-weight: bold;'>Backtrace:</span><span>
+#&gt; </span><span style='color: #555555;'> 1. </span><span>rlang::with_options(...)
+#&gt; </span><span style='color: #555555;'> 2. </span><span>testthat::expect_error(mytool(), class = "defunctError")
+#&gt; 
+#&gt; </span><span style='color: #00BB00;'>Test passed</span><span> 🥇</div><div class='input'>
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Lionel Henry.</p>
+  <p>Developed by Lionel Henry, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

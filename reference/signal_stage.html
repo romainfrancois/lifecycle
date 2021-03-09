@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Display last deprecation warnings — last_warnings • lifecycle</title>
+<title>Signal other experimental or superseded features — signal_stage • lifecycle</title>
 
 
 <!-- jquery -->
@@ -39,19 +39,13 @@
 
 
 
-<meta property="og:title" content="Display last deprecation warnings — last_warnings" />
-<meta property="og:description" content="Call these helpers to see the last deprecation warnings along with
-their backtrace:
-last_warnings() returns a list of all warnings that occurred
-during the last top-level R command.
-last_warning() returns only the last.
-
-
-If you call these in the console, these warnings are printed with a
-backtrace. Use print(last_warnings(), simplify = level) to
-control the verbosity of the backtrace. The simplify argument
-supports one of &quot;branch&quot; (the default), &quot;collapse&quot;, and
-&quot;none&quot; (in increasing order of verbosity)." />
+<meta property="og:title" content="Signal other experimental or superseded features — signal_stage" />
+<meta property="og:description" content="
+signal_stage() allows you to signal life cycle stages other than
+deprecation (for which you should use deprecate_warn() and friends).
+There is no behaviour associated with this signal, but in the future
+we will provide tools to log and report on usage of experimental and
+superseded functions." />
 
 
 
@@ -164,56 +158,54 @@ supports one of &quot;branch&quot; (the default), &quot;collapse&quot;, and
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Display last deprecation warnings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/lifecycle/blob/master/R/warning.R'><code>R/warning.R</code></a></small>
-    <div class="hidden name"><code>last_warnings.Rd</code></div>
+    <h1>Signal other experimental or superseded features</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/lifecycle/blob/master/R/signal.R'><code>R/signal.R</code></a></small>
+    <div class="hidden name"><code>signal_stage.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Call these helpers to see the last deprecation warnings along with
-their backtrace:</p><ul>
-<li><p><code>last_warnings()</code> returns a list of all warnings that occurred
-during the last top-level R command.</p></li>
-<li><p><code>last_warning()</code> returns only the last.</p></li>
-</ul>
-
-<p>If you call these in the console, these warnings are printed with a
-backtrace. Use <code><a href='https://rdrr.io/r/base/print.html'>print(last_warnings(), simplify = level)</a></code> to
-control the verbosity of the backtrace. The <code>simplify</code> argument
-supports one of <code>"branch"</code> (the default), <code>"collapse"</code>, and
-<code>"none"</code> (in increasing order of verbosity).</p>
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
+<p><code>signal_stage()</code> allows you to signal life cycle stages other than
+deprecation (for which you should use <code><a href='deprecate_soft.html'>deprecate_warn()</a></code> and friends).
+There is no behaviour associated with this signal, but in the future
+we will provide tools to log and report on usage of experimental and
+superseded functions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>last_warnings</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>signal_stage</span><span class='op'>(</span><span class='va'>stage</span>, <span class='va'>what</span>, env <span class='op'>=</span> <span class='fu'>caller_env</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
-<span class='fu'>last_warning</span><span class='op'>(</span><span class='op'>)</span></pre>
-
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>stage</th>
+      <td><p>Life cycle stage, either "experimental" or "superseded".</p></td>
+    </tr>
+    <tr>
+      <th>what</th>
+      <td><p>String describing what feature the stage applies too, using
+the same syntax as <code><a href='deprecate_soft.html'>deprecate_warn()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>Pair of environments that define where <code>deprecate_*()</code>
+was called (used to determine the package name) and where the function
+called the deprecating function was called (used to determine if
+<code><a href='deprecate_soft.html'>deprecate_soft()</a></code> should message).</p>
+<p>These are only needed if you're calling <code>deprecate_*()</code> from an internal
+helper, in which case you should forward <code>env = caller_env()</code> and
+<code>user_env = caller_env(2)</code>.</p></td>
+    </tr>
+    </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># These examples are not run because `last_warnings()` does not</span>
-<span class='co'># work well within knitr and pkgdown</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='va'>f</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/invisible.html'>invisible</a></span><span class='op'>(</span><span class='fu'>g</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>g</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'>h</span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'>i</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>h</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='fu'><a href='deprecate_soft.html'>deprecate_warn</a></span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"this()"</span><span class='op'>)</span>
-<span class='va'>i</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='fu'><a href='deprecate_soft.html'>deprecate_warn</a></span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"that()"</span><span class='op'>)</span>
-<span class='fu'>f</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># Print all the warnings that occurred during the last command:</span>
-<span class='fu'>last_warnings</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># Print only the last one:</span>
-<span class='fu'>last_warning</span><span class='op'>(</span><span class='op'>)</span>
-
-
-<span class='co'># By default, the backtraces are printed in their simplified form.</span>
-<span class='co'># Use `simplify` to control the verbosity:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>last_warnings</span><span class='op'>(</span><span class='op'>)</span>, simplify <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-
+    <pre class="examples"><div class='input'><span class='va'>foofy</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>z</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'>signal_stage</span><span class='op'>(</span><span class='st'>"experimental"</span>, <span class='st'>"foofy()"</span><span class='op'>)</span>
+  <span class='va'>x</span> <span class='op'>+</span> <span class='va'>y</span> <span class='op'>/</span> <span class='va'>z</span>
 <span class='op'>}</span>
-</div></pre>
+<span class='fu'>foofy</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 1.666667</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

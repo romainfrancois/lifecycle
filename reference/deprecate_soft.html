@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,23 +41,16 @@
 
 <meta property="og:title" content="Deprecate functions and arguments — deprecate_soft" />
 <meta property="og:description" content="These functions provide three levels of verbosity for deprecated
-functions.
+functions. Learn how to use them in vignette(&quot;communicate&quot;).
 deprecate_soft() warns only if the deprecated function is
-called from the global environment (so the user can change their
-script) or from the package currently being tested (so the
-package developer can fix the package). Use for soft-deprecated
-functions.
-deprecate_warn() warns unconditionally. Use for deprecated functions.
-deprecate_stop() fails unconditionally. Use for defunct functions.
+called from the global environment or from the package currently
+being tested.
+deprecate_warn() warns unconditionally.
+deprecate_stop() fails unconditionally.
 
 
 Warnings are only issued once every 8 hours to avoid overwhelming
-the user. See the verbosity option to control this
-behaviour.
-Deprecation warnings have class
-lifecycle_warning_deprecated. Deprecation errors have class
-lifecycle_error_deprecated." />
-<meta name="twitter:card" content="summary" />
+the user. Control with options(lifecycle_verbosity)." />
 
 
 
@@ -81,7 +78,7 @@ lifecycle_error_deprecated." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -95,7 +92,7 @@ lifecycle_error_deprecated." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lifecycle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -103,33 +100,53 @@ lifecycle_error_deprecated." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../articles/lifecycle.html">Get started</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/stages.html">Lifecycle stages</a>
+    </li>
+    <li>
+      <a href="../articles/manage.html">Manage lifecycle changes in functions you use</a>
+    </li>
+    <li>
+      <a href="../articles/communicate.html">Communicate lifecycle changes in your functions</a>
+    </li>
+  </ul>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     News
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.tidyverse.org/blog/2021/02/lifecycle-1-0-0/">lifecycle 1.0.0</a>
+    </li>
+    <li class="divider"></li>
     <li>
       <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
-<li>
-  <a href="https://github.com/r-lib/lifecycle">
-    <span class="fab fa fab fa-github fa-lg"></span>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/r-lib/lifecycle/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -147,76 +164,75 @@ lifecycle_error_deprecated." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Deprecate functions and arguments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/lifecycle/blob/master/R/signal-deprecated.R'><code>R/signal-deprecated.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/lifecycle/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
     <div class="hidden name"><code>deprecate_soft.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>These functions provide three levels of verbosity for deprecated
-functions.</p><ul>
+functions. Learn how to use them in <code><a href='../articles/communicate.html'>vignette("communicate")</a></code>.</p><ul>
 <li><p><code>deprecate_soft()</code> warns only if the deprecated function is
-called from the global environment (so the user can change their
-script) or from the package currently being tested (so the
-package developer can fix the package). Use for soft-deprecated
-functions.</p></li>
-<li><p><code>deprecate_warn()</code> warns unconditionally. Use for deprecated functions.</p></li>
-<li><p><code>deprecate_stop()</code> fails unconditionally. Use for defunct functions.</p></li>
+called from the global environment or from the package currently
+being tested.</p></li>
+<li><p><code>deprecate_warn()</code> warns unconditionally.</p></li>
+<li><p><code>deprecate_stop()</code> fails unconditionally.</p></li>
 </ul>
 
 <p>Warnings are only issued once every 8 hours to avoid overwhelming
-the user. See the <a href='verbosity.html'>verbosity option</a> to control this
-behaviour.</p>
-<p>Deprecation warnings have class
-<code>lifecycle_warning_deprecated</code>. Deprecation errors have class
-<code>lifecycle_error_deprecated</code>.</p>
+the user. Control with <code><a href='verbosity.html'>options(lifecycle_verbosity)</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>deprecate_soft</span>(
-  <span class='no'>when</span>,
-  <span class='no'>what</span>,
-  <span class='kw'>with</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>details</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>caller_env</span>(<span class='fl'>2</span>)
-)
+    <pre class="usage"><span class='fu'>deprecate_soft</span><span class='op'>(</span>
+  <span class='va'>when</span>,
+  <span class='va'>what</span>,
+  with <span class='op'>=</span> <span class='cn'>NULL</span>,
+  details <span class='op'>=</span> <span class='cn'>NULL</span>,
+  id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  env <span class='op'>=</span> <span class='fu'>caller_env</span><span class='op'>(</span><span class='op'>)</span>,
+  user_env <span class='op'>=</span> <span class='fu'>caller_env</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='fu'>deprecate_warn</span>(
-  <span class='no'>when</span>,
-  <span class='no'>what</span>,
-  <span class='kw'>with</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>details</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'>caller_env</span>(<span class='fl'>2</span>)
-)
+<span class='fu'>deprecate_warn</span><span class='op'>(</span>
+  <span class='va'>when</span>,
+  <span class='va'>what</span>,
+  with <span class='op'>=</span> <span class='cn'>NULL</span>,
+  details <span class='op'>=</span> <span class='cn'>NULL</span>,
+  id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  env <span class='op'>=</span> <span class='fu'>caller_env</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='fu'>deprecate_stop</span>(<span class='no'>when</span>, <span class='no'>what</span>, <span class='kw'>with</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>deprecate_stop</span><span class='op'>(</span><span class='va'>when</span>, <span class='va'>what</span>, with <span class='op'>=</span> <span class='cn'>NULL</span>, details <span class='op'>=</span> <span class='cn'>NULL</span>, env <span class='op'>=</span> <span class='fu'>caller_env</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>when</th>
-      <td><p>The package version when function/argument was deprecated.</p></td>
+      <td><p>A string giving the version when the behaviour was deprecated.</p></td>
     </tr>
     <tr>
       <th>what</th>
-      <td><p>If the deprecated feature is a whole function, the
-function name: <code>"foo()"</code>. If it's an argument that is being
-deprecated, the function call should include the argument:
-<code>"foo(arg = )"</code>.</p>
-<p>You can optionally supply the namespace: <code>"ns::foo()"</code>. If not
-supplied, it is inferred from the caller environment.</p></td>
+      <td><p>A string describing what is deprecated:</p><ul>
+<li><p>Deprecate a whole function with <code>"foo()"</code>.</p></li>
+<li><p>Deprecate an argument with <code>"foo(arg)"</code>.</p></li>
+<li><p>Partially deprecate an argument with
+<code>"foo(arg = 'must be a scalar integer')"</code>.</p></li>
+</ul>
+
+<p>You can optionally supply the namespace: <code>"ns::foo()"</code>, but this is
+usually not needed as it will be inferred from the caller environment.</p></td>
     </tr>
     <tr>
       <th>with</th>
-      <td><p>An optional replacement for the deprecated feature.
-This should be a string of the same form as <code>what</code>.</p></td>
+      <td><p>An optional string giving a recommended replacement for the
+deprecated behaviour. This takes the same form as <code>what</code>.</p></td>
     </tr>
     <tr>
       <th>details</th>
-      <td><p>The deprecation message is generated from <code>when</code>,
-<code>what</code>, and <code>with</code>. You can additionally supply a string
-<code>details</code> to be appended to the message.</p></td>
+      <td><p>In most cases the deprecation message can be automatically
+generated from <code>with</code>. When it can't, use <code>details</code> to provide a
+hand-written message. <code>details</code> can either be a single string or a
+character vector, which will be converted to a bulleted list.</p></td>
     </tr>
     <tr>
       <th>id</th>
@@ -227,75 +243,88 @@ programmatically and depends on inputs, or when you'd like to
 deprecate multiple functions but warn only once for all of them.</p></td>
     </tr>
     <tr>
-      <th>env</th>
-      <td><p>The environment in which the deprecated function
-was called. A warning is issued if called from the global
-environment. If testthat is running, a warning is also called if
-the deprecated function was called from the package being tested.</p>
-<p>This typically doesn't need to be specified, unless you call
-<code>deprecate_soft()</code> or <code>deprecate_warn()</code> from an internal helper.
-In that case, you need to forward the calling environment.</p></td>
+      <th>env, user_env</th>
+      <td><p>Pair of environments that define where <code>deprecate_*()</code>
+was called (used to determine the package name) and where the function
+called the deprecating function was called (used to determine if
+<code>deprecate_soft()</code> should message).</p>
+<p>These are only needed if you're calling <code>deprecate_*()</code> from an internal
+helper, in which case you should forward <code>env = caller_env()</code> and
+<code>user_env = caller_env(2)</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>NULL</code>, invisibly.</p>
+    <h2 class="hasAnchor" id="conditions"><a class="anchor" href="#conditions"></a>Conditions</h2>
+
+    
+
+<ul>
+<li><p>Deprecation warnings have class <code>lifecycle_warning_deprecated</code>.</p></li>
+<li><p>Deprecation errors have class <code>lifecycle_error_deprecated</code>.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='lifecycle-package.html'>lifecycle()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># A deprecated function `foo`:</span>
-<span class='fu'>deprecate_warn</span>(<span class='st'>"1.0.0"</span>, <span class='st'>"foo()"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` is deprecated as of &lt;NA&gt; 1.0.0.</span>
-#&gt; <span class='warning'><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'>
+<span class='fu'>deprecate_warn</span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"foo()"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` was deprecated in &lt;NA&gt; 1.0.0.</span></div><div class='input'>
 <span class='co'># A deprecated argument `arg`:</span>
-<span class='fu'>deprecate_warn</span>(<span class='st'>"1.0.0"</span>, <span class='st'>"foo(arg = )"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: The `arg` argument of `foo()` is deprecated as of &lt;NA&gt; 1.0.0.</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'>
+<span class='fu'>deprecate_warn</span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"foo(arg)"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: The `arg` argument of `foo()` is deprecated as of &lt;NA&gt; 1.0.0.</span></div><div class='input'>
 <span class='co'># A partially deprecated argument `arg`:</span>
-<span class='fu'>deprecate_warn</span>(<span class='st'>"1.0.0"</span>, <span class='st'>"foo(arg = 'must be a scalar integer')"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: The `arg` argument of `foo()` must be a scalar integer as of &lt;NA&gt; 1.0.0.</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'>
+<span class='fu'>deprecate_warn</span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"foo(arg = 'must be a scalar integer')"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: The `arg` argument of `foo()` must be a scalar integer as of &lt;NA&gt; 1.0.0.</span></div><div class='input'>
 <span class='co'># A deprecated function with a function replacement:</span>
-<span class='fu'>deprecate_warn</span>(<span class='st'>"1.0.0"</span>, <span class='st'>"foo()"</span>, <span class='st'>"bar()"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` is deprecated as of &lt;NA&gt; 1.0.0.</span>
-#&gt; <span class='warning'>Please use `bar()` instead.</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'>
+<span class='fu'>deprecate_warn</span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"foo()"</span>, <span class='st'>"bar()"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` was deprecated in &lt;NA&gt; 1.0.0.</span>
+#&gt; <span class='warning'>Please use `bar()` instead.</span></div><div class='input'>
 <span class='co'># A deprecated function with a function replacement from a</span>
 <span class='co'># different package:</span>
-<span class='fu'>deprecate_warn</span>(<span class='st'>"1.0.0"</span>, <span class='st'>"foo()"</span>, <span class='st'>"otherpackage::bar()"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` is deprecated as of &lt;NA&gt; 1.0.0.</span>
-#&gt; <span class='warning'>Please use `otherpackage::bar()` instead.</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'>
-<span class='co'># A deprecated function with an argument replacement:</span>
-<span class='fu'>deprecate_warn</span>(<span class='st'>"1.0.0"</span>, <span class='st'>"foo()"</span>, <span class='st'>"foo(bar = )"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` is deprecated as of &lt;NA&gt; 1.0.0.</span>
-#&gt; <span class='warning'>Please use the `bar` argument instead.</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='input'>
-</div></span></pre>
+<span class='fu'>deprecate_warn</span><span class='op'>(</span><span class='st'>"1.0.0"</span>, <span class='st'>"foo()"</span>, <span class='st'>"otherpackage::bar()"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` was deprecated in &lt;NA&gt; 1.0.0.</span>
+#&gt; <span class='warning'>Please use `otherpackage::bar()` instead.</span></div><div class='input'>
+<span class='co'># A deprecated function with custom message:</span>
+<span class='fu'>deprecate_warn</span><span class='op'>(</span>
+  when <span class='op'>=</span> <span class='st'>"1.0.0"</span>,
+  what <span class='op'>=</span> <span class='st'>"foo()"</span>,
+  details <span class='op'>=</span> <span class='st'>"Please use `otherpackage::bar(foo = TRUE)` instead"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` was deprecated in &lt;NA&gt; 1.0.0.</span>
+#&gt; <span class='warning'>Please use `otherpackage::bar(foo = TRUE)` instead</span></div><div class='input'>
+<span class='co'># A deprecated function with custom bulleted list:</span>
+<span class='fu'>deprecate_warn</span><span class='op'>(</span>
+  when <span class='op'>=</span> <span class='st'>"1.0.0"</span>,
+  what <span class='op'>=</span> <span class='st'>"foo()"</span>,
+  details <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+    x <span class='op'>=</span> <span class='st'>"This is dangerous"</span>,
+    i <span class='op'>=</span> <span class='st'>"Did you mean `safe_foo()` instead?"</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `foo()` was deprecated in &lt;NA&gt; 1.0.0.</span>
+#&gt; <span class='warning'><span style='color: #BB0000;'>✖</span><span> This is dangerous</span>
+#&gt; <span class='warning'></span><span style='color: #0000BB;'>ℹ</span><span> Did you mean `safe_foo()` instead?</span></div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Lionel Henry.</p>
+  <p>Developed by Lionel Henry, <a href='http://hadley.nz'>Hadley Wickham</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
